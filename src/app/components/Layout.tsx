@@ -102,7 +102,7 @@ export default function Layout({ children }: LayoutProps) {
               <div className="mt-8 space-y-2 text-sm text-slate-400">
                 <p className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
-                  12, Wole Ariyo, Lekki Phase 1, Lagos
+                  Plot 246 Cadastral Zone B10,<br />Jabi-Dakibiu, Abuja, Nigeria
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>

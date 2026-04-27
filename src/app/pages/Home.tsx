@@ -164,10 +164,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <Button size="lg" className="mt-8 bg-teal-500 hover:bg-teal-600 text-white">
+              {/* <Button size="lg" className="mt-8 bg-teal-500 hover:bg-teal-600 text-white">
                 Download Mobile App
                 <ChevronRight className="w-5 h-5 ml-2" />
-              </Button>
+              </Button> */}
             </div>
 
             <div className="relative">

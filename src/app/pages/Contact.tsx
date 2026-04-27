@@ -41,7 +41,7 @@ export default function Contact() {
                     <h3 className="text-lg font-semibold mb-1">Visit Us</h3>
                     <p className="text-slate-400 mb-2">Come say hello at our office HQ.</p>
                     <p className="text-teal-400 font-medium">
-                      12, Wole Ariyo,<br />Lekki Phase 1, Lagos, Nigeria
+                      Plot 246 Cadastral Zone B10,<br />Jabi-Dakibiu, Abuja, Nigeria
                     </p>
                   </div>
                 </div>
