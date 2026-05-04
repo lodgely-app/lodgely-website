@@ -22,9 +22,9 @@ export default function Layout({ children }: LayoutProps) {
             <div className="hidden md:flex items-center gap-8">
               <Link to="/#managers" className="text-slate-600 hover:text-slate-900 transition-colors">For Managers</Link>
               <Link to="/#tenants" className="text-slate-600 hover:text-slate-900 transition-colors">For Tenants</Link>
-              <a href={import.meta.env.VITE_MANAGER_WEB_URL || 'http://localhost:3000'} target="_blank" rel="noopener noreferrer">
+              {/* <a href={import.meta.env.VITE_MANAGER_WEB_URL || 'http://localhost:3000'} target="_blank" rel="noopener noreferrer">
                 <Button className="bg-teal-500 hover:bg-teal-600 text-white">Get Started</Button>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

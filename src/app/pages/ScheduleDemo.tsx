@@ -18,7 +18,7 @@ export default function ScheduleDemo() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('http://localhost:3001/api/schedule-demo', {
+      const response = await fetch(import.meta.env.VITE_API_BASE_URL + '/api/website/schedule-demo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
