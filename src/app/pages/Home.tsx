@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, Link } from 'react-router';
 import { CreditCard, Wrench, Bell, Users, BarChart3, Send, Shield, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -27,7 +28,12 @@ export default function Home() {
       {/* Hero Section */}
       <section id="features" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center max-w-3xl mx-auto"
+          >
             <Badge className="mb-6 bg-teal-100 text-teal-700 border-teal-200">Premium Property Management</Badge>
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               Seamless Living,
@@ -36,81 +42,59 @@ export default function Home() {
             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
               Connect facility managers with tenants through a premium digital ecosystem. Replace scattered communication and manual tracking with a beautiful, synchronized experience.
             </p>
-          </div>
+            <div className="flex justify-center">
+              <Link to="/schedule-demo">
+                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white px-8 text-lg h-14 rounded-full shadow-lg hover:shadow-xl transition-all">
+                  Schedule a Demo
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Manager Dashboard Section */}
       <section id="managers" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <Badge className="mb-4 bg-teal-500 text-white border-teal-400">For Facility Managers</Badge>
             <h2 className="text-4xl font-bold mb-4">Your Centralized Command Center</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Empower your team with real-time insights, streamlined operations, and complete control over your properties.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="bg-slate-800 border-slate-700 p-6 hover:bg-slate-750 transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-teal-500/10 flex items-center justify-center mb-4">
-                <Send className="w-6 h-6 text-teal-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Secure Onboarding</h3>
-              <p className="text-slate-300">
-                Dispatch secure tenant invitations and streamline the onboarding process with digital documentation.
-              </p>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 p-6 hover:bg-slate-750 transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-cyan-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Financial Tracking</h3>
-              <p className="text-slate-300">
-                Monitor real-time ledger data, payment cycles, and outstanding balances across all properties.
-              </p>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 p-6 hover:bg-slate-750 transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-purple-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Occupancy Management</h3>
-              <p className="text-slate-300">
-                Track building unit occupancy, lease cycles, and tenant information in one unified dashboard.
-              </p>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 p-6 hover:bg-slate-750 transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
-                <Bell className="w-6 h-6 text-blue-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Broadcast Announcements</h3>
-              <p className="text-slate-300">
-                Keep tenants informed with building-wide or targeted announcements delivered instantly.
-              </p>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 p-6 hover:bg-slate-750 transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
-                <Wrench className="w-6 h-6 text-orange-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Ticket Resolution</h3>
-              <p className="text-slate-300">
-                Manage maintenance requests efficiently with priority tracking and assignment workflows.
-              </p>
-            </Card>
-
-            <Card className="bg-slate-800 border-slate-700 p-6 hover:bg-slate-750 transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-green-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Secure & Compliant</h3>
-              <p className="text-slate-300">
-                Enterprise-grade security with role-based access and complete audit trails.
-              </p>
-            </Card>
+            {[
+              { icon: Send, color: "teal", title: "Secure Onboarding", desc: "Dispatch secure tenant invitations and streamline the onboarding process with digital documentation." },
+              { icon: BarChart3, color: "cyan", title: "Financial Tracking", desc: "Monitor real-time ledger data, payment cycles, and outstanding balances across all properties." },
+              { icon: Users, color: "purple", title: "Occupancy Management", desc: "Track building unit occupancy, lease cycles, and tenant information in one unified dashboard." },
+              { icon: Bell, color: "blue", title: "Broadcast Announcements", desc: "Keep tenants informed with building-wide or targeted announcements delivered instantly." },
+              { icon: Wrench, color: "orange", title: "Ticket Resolution", desc: "Manage maintenance requests efficiently with priority tracking and assignment workflows." },
+              { icon: Shield, color: "green", title: "Secure & Compliant", desc: "Enterprise-grade security with role-based access and complete audit trails." },
+            ].map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <Card className="bg-slate-800 border-slate-700 p-6 hover:bg-slate-750 transition-colors h-full">
+                  <div className={`w-12 h-12 rounded-lg bg-${feature.color}-500/10 flex items-center justify-center mb-4`}>
+                    <feature.icon className={`w-6 h-6 text-${feature.color}-400`} />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
+                  <p className="text-slate-300">{feature.desc}</p>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -119,7 +103,12 @@ export default function Home() {
       <section id="tenants" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <Badge className="mb-4 bg-teal-100 text-teal-700 border-teal-200">For Residents</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-6">Your Home, At Your Fingertips</h2>
               <p className="text-xl text-slate-600 mb-8">
@@ -127,50 +116,38 @@ export default function Home() {
               </p>
 
               <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-teal-100 flex items-center justify-center flex-shrink-0">
-                    <CreditCard className="w-6 h-6 text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Smart Payment Tracking</h3>
-                    <p className="text-slate-600">
-                      View lease cycles, service charges, and remaining balances across all your properties. Make secure digital payments instantly.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-cyan-100 flex items-center justify-center flex-shrink-0">
-                    <Wrench className="w-6 h-6 text-cyan-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Maintenance Requests</h3>
-                    <p className="text-slate-600">
-                      Submit and track maintenance requests with photos, priority levels, and real-time status updates.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
-                    <Bell className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Stay Informed</h3>
-                    <p className="text-slate-600">
-                      Receive building announcements, reminders, and important updates delivered directly to your device.
-                    </p>
-                  </div>
-                </div>
+                {[
+                  { icon: CreditCard, color: "teal", title: "Smart Payment Tracking", desc: "View lease cycles, service charges, and remaining balances across all your properties. Make secure digital payments instantly." },
+                  { icon: Wrench, color: "cyan", title: "Maintenance Requests", desc: "Submit and track maintenance requests with photos, priority levels, and real-time status updates." },
+                  { icon: Bell, color: "purple", title: "Stay Informed", desc: "Receive building announcements, reminders, and important updates delivered directly to your device." }
+                ].map((item, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.15 }}
+                    className="flex gap-4"
+                  >
+                    <div className={`w-12 h-12 rounded-lg bg-${item.color}-100 flex items-center justify-center flex-shrink-0`}>
+                      <item.icon className={`w-6 h-6 text-${item.color}-600`} />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-slate-900 mb-1">{item.title}</h3>
+                      <p className="text-slate-600">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
+            </motion.div>
 
-              {/* <Button size="lg" className="mt-8 bg-teal-500 hover:bg-teal-600 text-white">
-                Download Mobile App
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </Button> */}
-            </div>
-
-            <div className="relative">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
               <div className="relative z-10 max-w-sm mx-auto">
                 <div className="bg-slate-900 rounded-[3rem] p-3 shadow-2xl border-[4px] border-slate-800">
                   <div className="bg-slate-50 rounded-[2.4rem] overflow-hidden aspect-[9/18] relative flex flex-col">
@@ -195,7 +172,10 @@ export default function Home() {
                     <div className="flex-1 px-4 pt-4 space-y-4">
                       
                       {/* Balance Card */}
-                      <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 shadow-md">
+                      <motion.div 
+                        whileHover={{ scale: 1.02 }}
+                        className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 shadow-md cursor-pointer"
+                      >
                         <div className="mb-4">
                           <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Remaining Balance</div>
                           <div className="text-[10px] text-white/50">Cycle • Jan 1 - Dec 31</div>
@@ -218,16 +198,23 @@ export default function Home() {
                             <div className="text-sm font-bold text-teal-400">₦4,980.00</div>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
 
                       {/* Action Button */}
-                      <div className="bg-teal-500 rounded-xl py-3 flex items-center justify-center gap-2 shadow-sm">
+                      <motion.div 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="bg-teal-500 rounded-xl py-3 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                      >
                         <CreditCard className="w-4 h-4 text-slate-900" />
                         <span className="text-slate-900 font-bold text-sm">Make a Payment</span>
-                      </div>
+                      </motion.div>
 
                       {/* Issues Section */}
-                      <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100">
+                      <motion.div 
+                        whileHover={{ scale: 1.02 }}
+                        className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 cursor-pointer"
+                      >
                         <div className="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider">Your Open Issues</div>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
@@ -239,7 +226,7 @@ export default function Home() {
                           </div>
                           <div className="px-2 py-1 bg-orange-100 text-orange-700 text-[9px] font-bold rounded uppercase tracking-wider">Pending</div>
                         </div>
-                      </div>
+                      </motion.div>
 
                     </div>
                   </div>
@@ -247,9 +234,17 @@ export default function Home() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -z-10"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -z-10"></div>
-            </div>
+              <motion.div 
+                animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 right-0 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -z-10"
+              />
+              <motion.div 
+                animate={{ scale: [1, 1.2, 1], rotate: [0, -5, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-0 left-0 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -z-10"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -263,13 +258,6 @@ export default function Home() {
           <p className="text-xl text-teal-50 mb-8">
             Join forward-thinking property managers who've replaced scattered tools with one premium platform.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/schedule-demo">
-              <Button size="lg" className="bg-white text-teal-600 hover:bg-teal-50 px-8">
-                Schedule a Demo
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
     </>
