@@ -3,6 +3,7 @@ import { Calendar, Clock, User, Mail, Building, Phone, Send, CheckCircle2 } from
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import { SEO } from '../components/SEO';
 
 export default function ScheduleDemo() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -65,6 +66,11 @@ export default function ScheduleDemo() {
 
   return (
     <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-slate-50 min-h-screen">
+      <SEO 
+        title="Schedule a Demo" 
+        description="Book a personalized demo of Lodgely and see how our premium facility management software can streamline your operations." 
+        canonicalUrl="https://lodgely.ng/schedule-demo"
+      />
       <div className="max-w-6xl mx-auto">
         
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-start">
@@ -72,11 +78,11 @@ export default function ScheduleDemo() {
           <div className="lg:col-span-2 space-y-8">
             <div>
               <Badge className="mb-4 bg-teal-100 text-teal-700 border-teal-200">Free Consultation</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              <h1 className="text-4xl md:text-5xl font-light tracking-tight text-slate-900 mb-6">
                 See Lodgely in Action
               </h1>
-              <p className="text-lg text-slate-600 mb-8">
-                Discover how our premium property management platform can streamline your operations, delight your tenants, and boost your bottom line.
+              <p className="text-lg text-slate-500 font-light mb-8 leading-relaxed">
+                Discover how our premium facility management platform can streamline your operations, delight your tenants, and boost your bottom line.
               </p>
             </div>
 
@@ -86,8 +92,8 @@ export default function ScheduleDemo() {
                   <Calendar className="w-6 h-6 text-teal-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-1">Personalized Walkthrough</h3>
-                  <p className="text-slate-600 text-sm">A tailored 30-minute demonstration focusing on your specific property management needs.</p>
+                  <h3 className="font-medium text-slate-900 mb-1">Personalized Walkthrough</h3>
+                  <p className="text-slate-500 font-light text-sm leading-relaxed">A tailored 30-minute demonstration focusing on your specific property management needs.</p>
                 </div>
               </div>
               <div className="flex gap-4">
@@ -95,8 +101,8 @@ export default function ScheduleDemo() {
                   <Clock className="w-6 h-6 text-teal-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-1">Time-Saving Insights</h3>
-                  <p className="text-slate-600 text-sm">Learn how automated workflows can save your team hours of manual administrative work each week.</p>
+                  <h3 className="font-medium text-slate-900 mb-1">Time-Saving Insights</h3>
+                  <p className="text-slate-500 font-light text-sm leading-relaxed">Learn how automated workflows can save your team hours of manual administrative work each week.</p>
                 </div>
               </div>
             </div>
@@ -113,7 +119,7 @@ export default function ScheduleDemo() {
                 )}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-900">First Name</label>
+                    <label className="text-sm font-medium text-slate-700">First Name</label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <User className="h-5 w-5 text-slate-400" />
@@ -128,7 +134,7 @@ export default function ScheduleDemo() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-900">Last Name</label>
+                    <label className="text-sm font-medium text-slate-700">Last Name</label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <User className="h-5 w-5 text-slate-400" />
@@ -145,7 +151,7 @@ export default function ScheduleDemo() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-900">Work Email</label>
+                  <label className="text-sm font-medium text-slate-700">Work Email</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <Mail className="h-5 w-5 text-slate-400" />
@@ -161,7 +167,7 @@ export default function ScheduleDemo() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-900">Phone Number</label>
+                  <label className="text-sm font-medium text-slate-700">Phone Number</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <Phone className="h-5 w-5 text-slate-400" />
@@ -176,7 +182,7 @@ export default function ScheduleDemo() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-900">Company / Property Name</label>
+                  <label className="text-sm font-medium text-slate-700">Company / Property Name</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <Building className="h-5 w-5 text-slate-400" />
@@ -192,7 +198,7 @@ export default function ScheduleDemo() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-900">Number of Units Managed</label>
+                  <label className="text-sm font-medium text-slate-700">Number of Units Managed</label>
                   <select name="portfolioSize" className="block w-full px-3 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white transition-colors">
                     <option value="">Select portfolio size...</option>
                     <option value="1-50">1 - 50 units</option>

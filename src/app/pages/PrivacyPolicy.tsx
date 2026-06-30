@@ -1,17 +1,26 @@
+import React from 'react';
+import { Shield } from 'lucide-react';
+import { SEO } from '../components/SEO';
+
 export default function PrivacyPolicy() {
   return (
     <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <SEO 
+        title="Privacy Policy" 
+        description="Read the Lodgely Privacy Policy to understand how we collect, use, and protect your personal and financial data." 
+        canonicalUrl="https://lodgely.ng/privacy"
+      />
       <div className="max-w-3xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-light tracking-tight text-slate-900 mb-4">
             Privacy Policy
           </h1>
-          <p className="text-slate-500">
+          <p className="text-slate-500 font-light">
             Last Updated: April 2026
           </p>
         </div>
 
-        <div className="prose prose-slate prose-lg max-w-none text-slate-600">
+        <div className="prose prose-slate prose-lg max-w-none text-slate-500 font-light leading-relaxed">
           <p>
             At Lodgely, accessible from lodgely.com, one of our main priorities is the privacy of our visitors and users. This Privacy Policy document contains types of information that is collected and recorded by Lodgely and how we use it.
           </p>

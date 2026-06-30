@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { Facebook, Instagram, Twitter, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import logoImg from '../../imports/lodgely_logo.png';
+import Navbar from './Navbar';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,23 +13,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50 flex flex-col">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center gap-3">
-              <img src={logoImg} alt="Lodgely" className="w-10 h-10 rounded-lg" />
-              <span className="text-xl font-semibold text-slate-900">Lodgely</span>
-            </Link>
-            <div className="hidden md:flex items-center gap-8">
-              <Link to="/#managers" className="text-slate-600 hover:text-slate-900 transition-colors">For Managers</Link>
-              <Link to="/#tenants" className="text-slate-600 hover:text-slate-900 transition-colors">For Tenants</Link>
-              {/* <a href={import.meta.env.VITE_MANAGER_WEB_URL || 'http://localhost:3000'} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-teal-500 hover:bg-teal-600 text-white">Get Started</Button>
-              </a> */}
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Main Content */}
       <main className="flex-grow">
@@ -46,7 +31,7 @@ export default function Layout({ children }: LayoutProps) {
                 <span className="text-2xl font-bold text-white tracking-tight">Lodgely</span>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-sm">
-                Premium property management simplified. Empowering facility managers and tenants with a seamless, connected living experience.
+                Facility management simplified. Empowering facility managers and tenants with a seamless, connected living experience.
               </p>
               <div className="flex items-center gap-4">
                 <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-teal-500 hover:text-white transition-all duration-300">
@@ -106,7 +91,7 @@ export default function Layout({ children }: LayoutProps) {
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
-                  <a href="mailto:support@lodgely.com" className="hover:text-white transition-colors">support@lodgely.com</a>
+                  <a href="mailto:support@lodgely.ng" className="hover:text-white transition-colors">support@lodgely.ng</a>
                 </p>
               </div>
             </div>
