@@ -19,7 +19,11 @@ export default function ScheduleDemo() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch(import.meta.env.VITE_API_BASE_URL + '/api/website/schedule-demo', {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL && import.meta.env.VITE_API_BASE_URL !== 'undefined' 
+        ? import.meta.env.VITE_API_BASE_URL 
+        : 'https://manager-be.staging.lodgely.ng'; // Fallback to your production/staging API URL
+        
+      const response = await fetch(`${baseUrl}/api/website/schedule-demo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
