@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { Calendar, Clock, User, Mail, Building, Phone, Send, CheckCircle2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
@@ -9,6 +10,8 @@ export default function ScheduleDemo() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,6 +20,14 @@ export default function ScheduleDemo() {
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
+
+    if (!recaptchaToken) {
+      setErrorMsg('Please complete the ReCAPTCHA verification.');
+      setIsLoading(false);
+      return;
+    }
+
+    const payload = { ...data, recaptchaToken };
 
     try {
       const baseUrl = import.meta.env.VITE_API_BASE_URL && import.meta.env.VITE_API_BASE_URL !== 'undefined' 
@@ -28,7 +39,7 @@ export default function ScheduleDemo() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -212,7 +223,15 @@ export default function ScheduleDemo() {
                   </select>
                 </div>
 
-                <Button type="submit" size="lg" disabled={isLoading} className="w-full bg-teal-500 hover:bg-teal-600 text-white py-6 text-lg rounded-xl mt-4 shadow-md">
+                <div className="flex justify-center mt-4">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+                    onChange={(token) => setRecaptchaToken(token)}
+                  />
+                </div>
+
+                <Button type="submit" size="lg" disabled={isLoading || !recaptchaToken} className="w-full bg-teal-500 hover:bg-teal-600 text-white py-6 text-lg rounded-xl mt-4 shadow-md">
                   <Send className={`w-5 h-5 mr-2 ${isLoading ? 'animate-pulse' : ''}`} />
                   {isLoading ? 'Sending...' : 'Request Demo'}
                 </Button>
