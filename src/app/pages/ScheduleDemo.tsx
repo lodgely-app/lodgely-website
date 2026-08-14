@@ -6,8 +6,6 @@ import { Card } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { SEO } from '../components/SEO';
 
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}`;
-
 export default function ScheduleDemo() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +30,7 @@ export default function ScheduleDemo() {
     const payload = { ...data, recaptchaToken };
 
     try {
-      const response = await fetch(`${BASE_URL}/api/website/schedule-demo`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005'}/api/website/schedule-demo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

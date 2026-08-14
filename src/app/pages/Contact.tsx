@@ -5,8 +5,6 @@ import { Card } from '../components/ui/card';
 import { SEO } from '../components/SEO';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}`;
-
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +29,7 @@ export default function Contact() {
     const payload = { ...data, recaptchaToken };
 
     try {
-      const response = await fetch(`${BASE_URL}/api/website/contact`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005'}/api/website/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
